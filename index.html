@@ -81,11 +81,14 @@
   <body>
     <div class="container">
       <h1>Better-Housing</h1>
-      <p>Better homes for everyone. Stay tuned for updates!</p>
+      <p>
+        Better homes for everyone. Subscribe and be the first who finds their
+        next home!
+      </p>
       <form id="notifyForm">
         <input type="text" name="name" placeholder="Your Name" required />
         <input type="email" name="email" placeholder="Your Email" required />
-        <button type="submit">Notify Me</button>
+        <button type="submit">Subscribe!</button>
       </form>
       <footer>
         &copy; <span id="year"></span> Better-Housing. All rights reserved.
@@ -115,7 +118,7 @@
             .send("service_w7trdyg", "template_g3bd9px", {
               from_name: name,
               from_email: email,
-              to_email: "raduteodor01@mail.com",
+              to_email: "anccaradu@mail.com",
             })
             .then(() => {
               alert("Thank you! Your info has been sent.");
