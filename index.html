@@ -82,7 +82,7 @@
     <div class="container">
       <h1>Better-Housing</h1>
       <p>Better homes for everyone. Stay tuned for updates!</p>
-      <form>
+      <form id="notifyForm">
         <input type="text" name="name" placeholder="Your Name" required />
         <input type="email" name="email" placeholder="Your Email" required />
         <button type="submit">Notify Me</button>
@@ -92,8 +92,40 @@
       </footer>
     </div>
 
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <script>
+      // Set current year
       document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Initialize EmailJS
+      emailjs.init("fv4bMIimYNKbbjz3-"); // Replace with your EmailJS public key
+
+      // Handle form submission
+      document
+        .getElementById("notifyForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const name = this.name.value;
+          const email = this.email.value;
+
+          // Send email via EmailJS
+          emailjs
+            .send("service_w7trdyg", "template_g3bd9px", {
+              from_name: name,
+              from_email: email,
+              to_email: "raduteodor01@mail.com",
+            })
+            .then(() => {
+              alert("Thank you! Your info has been sent.");
+              this.reset();
+            })
+            .catch((error) => {
+              console.error(error);
+              alert("Oops! Something went wrong. Please try again.");
+            });
+        });
     </script>
   </body>
 </html>
